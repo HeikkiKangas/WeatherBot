@@ -1,4 +1,4 @@
-# Works with Python 3.6 testing master
+# Works with Python 3.6 testing
 
 import os
 import asyncio
