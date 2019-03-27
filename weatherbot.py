@@ -58,4 +58,3 @@ async def list_servers():
 
 client.loop.create_task(list_servers())
 client.run(TOKEN)
-# Test
