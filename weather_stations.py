@@ -15,28 +15,10 @@ class WeatherStations:
     def __update(self):
         aviation_stations_url = 'http://opendata.fmi.fi/wfs?request=GetFeature&storedquery_id=fmi::ef::stations&networkid=224&'
         weather_stations_url = 'http://opendata.fmi.fi/wfs?request=getFeature&storedquery_id=fmi::ef::stations&networkid=121&'
-        '''
-        weather_stations_xml = urllib.request.urlopen('http://opendata.fmi.fi/wfs?request=getFeature&storedquery_id=fmi::ef::stations&networkid=121&')
-        dom_tree = xml.dom.minidom.parse(weather_stations_xml)
-        document = dom_tree.documentElement
-        elements = document.getElementsByTagName('wfs:member')
-        '''
 
         self.__weather_stations = {}
         self.__last_updated = datetime.datetime.now()
-        '''
-        for element in elements:
-            name = element.getElementsByTagName('ef:name')[0].childNodes[0].data
-            fmisid = element.getElementsByTagName('gml:identifier')[0].childNodes[0].data
-
-            split_name = name.split(" ")
-            city = split_name[0]
-            area = " ".join(split_name[1:])
-
-            if city not in self.__weather_stations:
-                self.__weather_stations[city] = []
-            self.__weather_stations[city].append([area, fmisid])
-        '''
+        
         self.__add_stations(aviation_stations_url)
         self.__add_stations(weather_stations_url)
 
