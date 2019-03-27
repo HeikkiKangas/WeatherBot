@@ -1,5 +1,4 @@
-# Works with Python 3.6 testing
-# master test 666
+# Use Python 3.6, 3.7 won't work with asyncio
 
 import os
 import asyncio
