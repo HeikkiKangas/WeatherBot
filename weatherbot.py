@@ -1,4 +1,4 @@
-# Works with Python 3.6 jee
+# Works with Python 3.6
 
 import os
 import asyncio
