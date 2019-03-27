@@ -1,5 +1,4 @@
-# Works with Python 3.6 testing
-# New test, will we end up with 2 processes
+# Use Python 3.6, 3.7 has problems with asyncio
 
 import os
 import asyncio
