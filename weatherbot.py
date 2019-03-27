@@ -1,4 +1,4 @@
-# Work with Python 3.6
+# Works with Python 3.6
 
 import os
 import asyncio
@@ -6,7 +6,7 @@ from discord.ext.commands import Bot
 from weather_stations import WeatherStations
 
 BOT_PREFIX = ("?", "!")
-TOKEN = os.environ.get("TOKEN")  # Get at discordapp.com/developers/applications/me
+TOKEN = os.environ.get("TOKEN")
 
 client = Bot(command_prefix=BOT_PREFIX)
 ws = WeatherStations()
@@ -43,7 +43,6 @@ async def asemat(city):
 
 @client.event
 async def on_ready():
-    #await client.change_presence(game=Game(name="with himself"))
     await client.change_presence(game=None,  status=None, afk=False)
     print("Logged in as " + client.user.name)
 
@@ -59,21 +58,3 @@ async def list_servers():
 
 client.loop.create_task(list_servers())
 client.run(TOKEN)
-
-'''
-'http://opendata.fmi.fi/wfs?request=getFeature&storedquery_id=fmi::observations::weather::simple&place=siilinkari&starttime=2019-02-15T11:00:00Z&parameters=t2m,rh,ws_10min&'
-DATE vuosi-kuukausi-päivä
-TIME -2H -20min
-FMISID asema
-http://opendata.fmi.fi/wfs?request=getFeature&storedquery_id=fmi::observations::weather::simple&fmisid='
-+ FMISID +
-'&starttime='
-+ DATE +
-'T'
-+ TIME +
-'Z&parameters=t2m,rh,ws_10min&'
-
-#asemalista
-http://opendata.fmi.fi/wfs?request=getFeature&storedquery_id=fmi::ef::stations&place=tampere&
-'''
-
