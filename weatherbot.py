@@ -41,6 +41,16 @@ async def asemat(city):
     await client.say(response)
 
 
+@client.command()
+async def komennot():
+    response = '''!komennot                          listaa komennot
+!sää                                      hakee Tampereen sään
+!sää <kaupunki>               hakee annetun kaupungin sään
+!asemat <kaupunki>        hakee annetun kaupungin sääasemien nimet
+!sää <sääaseman nimi>  hakee annetun sääaseman sään'''
+    await client.say(response)
+
+
 @client.event
 async def on_ready():
     await client.change_presence(game=None,  status=None, afk=False)
