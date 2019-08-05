@@ -1,0 +1,2 @@
+Admins can change bot settings?
+Blacklist channels from server, dm instead
