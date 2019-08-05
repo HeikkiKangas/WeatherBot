@@ -1,2 +1,88 @@
-Admins can change bot settings?
-Blacklist channels from server, dm instead
++--- To-Do Output ------------------------------------------------------------------------------------------------------------------+
+| Forecasts with icons                                                                                                              |
+| Wind direction icons                                                                                                              |
+| Allowed command channels, configs, admins, timed events                                                                                                          |
++-----------------------------------------------------------------------------------------------------------------------------------+
+
++--- To-Do Back-Endish? ------------------------------------------------------------------------------------------------------------+
+| (Output generated picture for icons?)                                                                                             |
+| *Set user as admin                                                                                                                | | *Blacklist channel from server, dm instead                                                                                        |
+| Timed weather reports to channels                                                                                                 |
+| Separate timer process for triggering events?                                                                                     |
++-----------------------------------------------------------------------------------------------------------------------------------+
+
+
+--- All commands -------------------------------------------------------------------------------------------------------------------- 
+
+server_config = db.get_server_config(server_id)
+if message.directmessage || db.get_channel_allowed(message.channel_id):
+    output *command output* to *sender*
+else:
+    output *command output* to *channel*
+
+--- Config commands -----------------------------------------------------------------------------------------------------------------
+
+if server.*config on channels* || *directmessage*:
+    command_output = ''
+    if sender.*authorized to config*:
+        command_output = success
+    else:
+        command_output = failure
+    if directmessage*:
+        output command_output to *sender*
+    else
+        output command_output to *channel*
+
+--- Databases -----------------------------------------------------------------------------------------------------------------------
+
+--- 'servers' --------------------------------+
++--------------------------------------+      |
+| server                               |
++--------------------------------------+
+| server_id                         pk |
+| config_on_channels                   | 
+| output_to_whitelisted_channels       | 
+| user_level_for_config                | 
+| default_timezone                     |
++--------------------------------------+ 
+
+--- *server_id* ----------------+
++------------------------+      |
+| whitelisted_channels   |               
++------------------------+               
+| channel_id          pk |
++------------------------+
+
++------------------------+
+| blacklisted_channels   |               
++------------------------+               
+| channel_id          pk |
++------------------------+
+
++------------------------+
+| admins                 |
++------------------------+
+| user_id             pk |
++------------------------+
+
++------------------------+
+| timed_events           |
++------------------------+
+| auto_increment_id   pk +---+
+| channel_id             |   |
+| forecast       boolean |   |
+| forecast_time          |   |
+| station_id             |   |
+| timezone               |   |
++------------------------+   |
+                             |
++------------------------+   |
+| event_times            |   |
++------------------------+   |
+| auto_increment_id   pk |   |
+| timed_event_id         +---+
+| event_time             |
++------------------------+
+
+
+
